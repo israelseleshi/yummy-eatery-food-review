@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { migrateRestaurantIds } from "../scripts/migrateRestaurantIds";
-import { migrateRestaurants } from "../scripts/migrateRestaurants";
-import { migrateInitialData, removeDuplicateRestaurants } from "../scripts/migrateData";
+import { removeDuplicateRestaurants } from "../scripts/migrateData";
 
 const isDev = import.meta.env.MODE === "development";
 
@@ -10,16 +9,6 @@ const migrations = [
     key: "migrateRestaurantIds",
     label: "Migrate Restaurant IDs",
     fn: migrateRestaurantIds,
-  },
-  {
-    key: "migrateRestaurants",
-    label: "Migrate Restaurants",
-    fn: migrateRestaurants,
-  },
-  {
-    key: "migrateInitialData",
-    label: "Migrate Initial Data",
-    fn: migrateInitialData,
   },
   {
     key: "removeDuplicateRestaurants",
