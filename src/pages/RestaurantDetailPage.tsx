@@ -144,7 +144,7 @@ const RestaurantDetailPage: React.FC = () => {
                     Reviews ({reviews.length})
                   </h2>
                   
-                  {id && <ReviewForm restaurantId={parseInt(id)} user={user} />}
+                  {id && <ReviewForm restaurantId={id} user={user} />}
 
                   {reviews.length > 0 ? (
                     <div className="space-y-6">
