@@ -5,7 +5,7 @@ import { createReview } from '../lib/reviews';
 import { User } from '../lib/auth';
 
 interface ReviewFormProps {
-  restaurantId: number;
+  restaurantId: string;
   user: User | null;
 }
 
@@ -37,7 +37,7 @@ const ReviewForm: React.FC<ReviewFormProps> = ({ restaurantId, user }) => {
 
     try {
       await createReview({
-        restaurantId: restaurantId.toString(),
+        restaurantId,
         userId: user.id,
         userName: `${user.firstName} ${user.lastName}`,
         rating,
