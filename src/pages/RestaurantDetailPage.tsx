@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { Star, MapPin, Clock, DollarSign } from 'lucide-react';
+import { Star, MapPin, Clock, DollarSign, ExternalLink } from 'lucide-react';
 import { useAuth } from '../lib/auth';
 import { Review, subscribeToRestaurantReviews } from '../lib/reviews';
-import { getRestaurantById } from '../lib/restaurants';
+import { getRestaurantById, Restaurant } from '../lib/restaurants';
 import ReviewForm from '../components/ReviewForm';
 import RestaurantActions from '../components/RestaurantActions';
 import LoadingState from '../components/LoadingState';
@@ -11,10 +11,20 @@ import LoadingState from '../components/LoadingState';
 const RestaurantDetailPage: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const { user } = useAuth();
-  const [restaurant, setRestaurant] = useState<any>(null);
+  const [restaurant, setRestaurant] = useState<Restaurant | null>(null);
   const [reviews, setReviews] = useState<Review[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+
+  // Function to convert goo.gl/maps URL to Google Maps Embed API URL
+  const getEmbedUrl = (mapUrl: string): string | undefined => {
+    // Extract the place ID or coordinates from the goo.gl/maps URL
+    const placeId = mapUrl.split('/').pop();
+    if (!placeId) return undefined;
+    
+    // Construct the embed URL with the place ID
+    return `https://www.google.com/maps/embed/v1/place?key=${import.meta.env.VITE_GOOGLE_MAPS_API_KEY}&q=place_id:${placeId}`;
+  };
 
   useEffect(() => {
     const fetchRestaurant = async () => {
@@ -111,7 +121,7 @@ const RestaurantDetailPage: React.FC = () => {
                     </div>
                   </div>
                 </div>
-                <RestaurantActions restaurantId={parseInt(id)} />
+                {id && <RestaurantActions restaurantId={parseInt(id)} />}
               </div>
             </div>
           </div>
@@ -134,7 +144,7 @@ const RestaurantDetailPage: React.FC = () => {
                     Reviews ({reviews.length})
                   </h2>
                   
-                  <ReviewForm restaurantId={parseInt(id)} user={user} />
+                  {id && <ReviewForm restaurantId={parseInt(id)} user={user} />}
 
                   {reviews.length > 0 ? (
                     <div className="space-y-6">
@@ -197,6 +207,20 @@ const RestaurantDetailPage: React.FC = () => {
                       <MapPin className="h-5 w-5 text-neutral-500 mt-1 flex-shrink-0" />
                       <p className="ml-3 text-neutral-700">{restaurant.address}</p>
                     </div>
+                    {restaurant.mapUrl && (
+                      <div className="mt-4">
+                        <a
+                          href={restaurant.mapUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center justify-center w-full px-4 py-2 text-sm font-medium text-white bg-primary-500 rounded-lg hover:bg-primary-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 transition-colors"
+                        >
+                          <MapPin className="w-4 h-4 mr-2" />
+                          View on Google Maps
+                          <ExternalLink className="w-4 h-4 ml-2" />
+                        </a>
+                      </div>
+                    )}
                     <div className="flex items-start">
                       <Clock className="h-5 w-5 text-neutral-500 mt-1 flex-shrink-0" />
                       <p className="ml-3 text-neutral-700">{restaurant.openingHours}</p>
