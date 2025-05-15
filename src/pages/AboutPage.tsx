@@ -114,52 +114,44 @@ const AboutPage: React.FC = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
             <div className="text-center">
               <div className="mb-4 relative w-24 h-24 md:w-32 md:h-32 mx-auto">
-                <img 
-                  src="https://images.pexels.com/photos/2379005/pexels-photo-2379005.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" 
-                  alt="Selamawit Tadesse" 
-                  className="w-full h-full object-cover rounded-full"
-                />
+                <div className="w-full h-full rounded-full bg-primary-100 flex items-center justify-center">
+                  <Users className="h-12 w-12 text-primary-500" />
+                </div>
               </div>
-              <h3 className="font-display font-semibold text-lg md:text-xl text-neutral-900">Selamawit Tadesse</h3>
+              <h3 className="font-display font-semibold text-lg md:text-xl text-neutral-900">Selamawit Wale</h3>
               <p className="text-primary-500 mb-2">Founder & CEO</p>
               <p className="text-sm md:text-base text-neutral-600">Food critic and entrepreneur with a passion for Ethiopian cuisine</p>
             </div>
             
             <div className="text-center">
               <div className="mb-4 relative w-24 h-24 md:w-32 md:h-32 mx-auto">
-                <img 
-                  src="https://images.pexels.com/photos/2117283/pexels-photo-2117283.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" 
-                  alt="Dawit Haile" 
-                  className="w-full h-full object-cover rounded-full"
-                />
+                <div className="w-full h-full rounded-full bg-primary-100 flex items-center justify-center">
+                  <Users className="h-12 w-12 text-primary-500" />
+                </div>
               </div>
-              <h3 className="font-display font-semibold text-lg md:text-xl text-neutral-900">Dawit Haile</h3>
+              <h3 className="font-display font-semibold text-lg md:text-xl text-neutral-900">Abel Tewodros</h3>
               <p className="text-primary-500 mb-2">Head of Reviews</p>
               <p className="text-sm md:text-base text-neutral-600">Former chef with 15 years of experience in fine dining restaurants</p>
             </div>
             
             <div className="text-center">
               <div className="mb-4 relative w-24 h-24 md:w-32 md:h-32 mx-auto">
-                <img 
-                  src="https://images.pexels.com/photos/3757004/pexels-photo-3757004.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" 
-                  alt="Hirut Bekele" 
-                  className="w-full h-full object-cover rounded-full"
-                />
+                <div className="w-full h-full rounded-full bg-primary-100 flex items-center justify-center">
+                  <Users className="h-12 w-12 text-primary-500" />
+                </div>
               </div>
-              <h3 className="font-display font-semibold text-lg md:text-xl text-neutral-900">Hirut Bekele</h3>
+              <h3 className="font-display font-semibold text-lg md:text-xl text-neutral-900">Yonas Lake</h3>
               <p className="text-primary-500 mb-2">Photography Director</p>
               <p className="text-sm md:text-base text-neutral-600">Food photographer specializing in capturing Ethiopian cuisine</p>
             </div>
             
             <div className="text-center">
               <div className="mb-4 relative w-24 h-24 md:w-32 md:h-32 mx-auto">
-                <img 
-                  src="https://images.pexels.com/photos/2923156/pexels-photo-2923156.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" 
-                  alt="Eyob Solomon" 
-                  className="w-full h-full object-cover rounded-full"
-                />
+                <div className="w-full h-full rounded-full bg-primary-100 flex items-center justify-center">
+                  <Users className="h-12 w-12 text-primary-500" />
+                </div>
               </div>
-              <h3 className="font-display font-semibold text-lg md:text-xl text-neutral-900">Eyob Solomon</h3>
+              <h3 className="font-display font-semibold text-lg md:text-xl text-neutral-900">Israel Theodros</h3>
               <p className="text-primary-500 mb-2">Tech Lead</p>
               <p className="text-sm md:text-base text-neutral-600">Software engineer with a background in web development</p>
             </div>
